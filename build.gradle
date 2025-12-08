@@ -5,13 +5,16 @@ plugins {
 group = 'ru.netology'
 version = '1.0-SNAPSHOT'
 
+sourceCompatibility = 11
+targetCompatibility = 11
+
 repositories {
     mavenCentral()
 }
 
 dependencies {
     testImplementation 'org.junit.jupiter:junit-jupiter:5.10.0'
-    testImplementation 'com.codeborne:selenide:7.5.0'
+    testImplementation 'com.codeborne:selenide:6.19.1'  // Версия для Java 11
     testImplementation 'com.github.javafaker:javafaker:1.0.2'
     testImplementation 'com.google.code.gson:gson:2.10.1'
     testImplementation 'io.rest-assured:rest-assured:5.5.0'

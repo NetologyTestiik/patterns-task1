@@ -21,12 +21,6 @@ jobs:
         
     - name: Grant execute permission for gradlew
       run: chmod +x gradlew
-      
-    - name: Start application
-      run: |
-        cd artifacts
-        java -jar app-replan-delivery.jar &
-        sleep 5
         
     - name: Run tests
       run: ./gradlew test --info
