@@ -28,9 +28,13 @@ test {
     systemProperties = [
         'selenide.headless': System.getProperty('selenide.headless', 'false')
     ]
+    systemProperties = [
+        'selenide.headless': System.getProperty('selenide.headless', 'false')
+    ]
     systemProperty "file.encoding", "UTF-8"
 }
 
 compileJava {
     options.encoding = 'UTF-8'
 }
+
