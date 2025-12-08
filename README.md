@@ -1,8 +1,8 @@
 # Patterns Task 1: Delivery Card Order
 
-![Java CI with Gradle](https://github.com/YOUR_USERNAME/patterns-task1/workflows/Java%20CI%20with%20Gradle/badge.svg)
+![Java CI with Gradle](https://github.com/NetologyTestiik/patterns-task1/workflows/Java%20CI%20with%20Gradle/badge.svg)
 
-## Описание
+## Описание проекта
 Автотесты для функции заказа доставки карты с возможностью перепланирования даты.
 
 ## Технологии
@@ -11,7 +11,7 @@
 - Selenide
 - Faker
 - Lombok
-- Gradle
+- GitHub Actions
 
 ## Запуск тестов
 1. Запустите приложение:
