@@ -1,4 +1,4 @@
-plugins {
+﻿plugins {
     id 'java'
 }
 
@@ -14,7 +14,7 @@ repositories {
 
 dependencies {
     testImplementation 'org.junit.jupiter:junit-jupiter:5.10.0'
-    testImplementation 'com.codeborne:selenide:6.19.1'  // Версия для Java 11
+    testImplementation 'com.codeborne:selenide:6.19.1'  // Р’РµСЂСЃРёСЏ РґР»СЏ Java 11
     testImplementation 'com.github.javafaker:javafaker:1.0.2'
     testImplementation 'com.google.code.gson:gson:2.10.1'
     testImplementation 'io.rest-assured:rest-assured:5.5.0'
@@ -25,6 +25,9 @@ dependencies {
 
 test {
     useJUnitPlatform()
+    systemProperties = [
+        'selenide.headless': System.getProperty('selenide.headless', 'false')
+    ]
     systemProperty "file.encoding", "UTF-8"
 }
 

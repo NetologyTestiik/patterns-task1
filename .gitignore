@@ -18,5 +18,4 @@ logs/
 .DS_Store
 Thumbs.db
 
-# Application
-app-*.jar
+

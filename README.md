@@ -8,12 +8,18 @@
 ## Технологии
 - Java 11
 - JUnit 5
-- Selenide
+- Selenide 6.19.1 (совместимость с Java 11)
 - Faker
 - Lombok
 - GitHub Actions
 
-## Запуск тестов
+## Особенности реализации
+- Используются data-классы (RegistrationDto)
+- Генерация тестовых данных через Faker
+- Паттерн Page Object (неявно через Selenide селекторы)
+- Утилитный класс DataGenerator
+
+## Запуск тестов локально
 1. Запустите приложение:
 ```bash
 cd artifacts
