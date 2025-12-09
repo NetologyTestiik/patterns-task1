@@ -1,6 +1,5 @@
 ﻿package ru.netology.ibank;
 
-import com.codeborne.selenide.Configuration;
 import java.time.Duration;
 import org.junit.jupiter.api.*;
 import ru.netology.ibank.data.*;
@@ -12,17 +11,12 @@ class AuthTest {
     private ApiUser activeUser;
     private ApiUser blockedUser;
 
-    @BeforeAll
-    static void setUpAll() {
-        Configuration.browserSize = "1920x1080";
-    }
-
     @BeforeEach
     void setUp() {
         // Р“РµРЅРµСЂРёСЂСѓРµРј С‚РµСЃС‚РѕРІС‹С… РїРѕР»СЊР·РѕРІР°С‚РµР»РµР№
-        activeUser = DataGenerator.generateActiveApiUser();
-        blockedUser = DataGenerator.generateBlockedApiUser();
-        
+        activeUser = DataGenerator.generateUser("active");
+        blockedUser = DataGenerator.generateUser("blocked");
+
         // РЎРѕР·РґР°С‘Рј РїРѕР»СЊР·РѕРІР°С‚РµР»РµР№ С‡РµСЂРµР· API
         ApiHelper.createUser(activeUser);
         ApiHelper.createUser(blockedUser);
@@ -32,26 +26,26 @@ class AuthTest {
     @DisplayName("РЈСЃРїРµС€РЅР°СЏ Р°РІС‚РѕСЂРёР·Р°С†РёСЏ Р°РєС‚РёРІРЅРѕРіРѕ РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ")
     void shouldSuccessfulLoginWithActiveUser() {
         open("http://localhost:9999");
-        
-        $("[data-test-id=login] input").setValue(activeUser.getLogin());
-        $("[data-test-id=password] input").setValue(activeUser.getPassword());
-        $("[data-test-id=action-login]").click();
-        
+
+        [data-test-id=login] input.setValue(activeUser.getLogin());
+        [data-test-id=password] input.setValue(activeUser.getPassword());
+        [data-test-id=action-login].click();
+
         // РџСЂРѕРІРµСЂСЏРµРј СѓСЃРїРµС€РЅС‹Р№ РІС…РѕРґ
-        $("h2").shouldHave(text("Р›РёС‡РЅС‹Р№ РєР°Р±РёРЅРµС‚"));
+        h2.shouldHave(text("Р›РёС‡РЅС‹Р№ РєР°Р±РёРЅРµС‚"));
     }
 
     @Test
     @DisplayName("РћС€РёР±РєР° Р°РІС‚РѕСЂРёР·Р°С†РёРё Р·Р°Р±Р»РѕРєРёСЂРѕРІР°РЅРЅРѕРіРѕ РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ")
     void shouldBlockedUserLoginError() {
         open("http://localhost:9999");
-        
-        $("[data-test-id=login] input").setValue(blockedUser.getLogin());
-        $("[data-test-id=password] input").setValue(blockedUser.getPassword());
-        $("[data-test-id=action-login]").click();
-        
+
+        [data-test-id=login] input.setValue(blockedUser.getLogin());
+        [data-test-id=password] input.setValue(blockedUser.getPassword());
+        [data-test-id=action-login].click();
+
         // РџСЂРѕРІРµСЂСЏРµРј РѕС€РёР±РєСѓ
-        $("[data-test-id=error-notification]")
+        [data-test-id=error-notification]
                 .shouldBe(visible, Duration.ofSeconds(15))
                 .shouldHave(text("РћС€РёР±РєР°! РџРѕР»СЊР·РѕРІР°С‚РµР»СЊ Р·Р°Р±Р»РѕРєРёСЂРѕРІР°РЅ"));
     }
@@ -60,12 +54,12 @@ class AuthTest {
     @DisplayName("РћС€РёР±РєР° РїСЂРё РЅРµРІРµСЂРЅРѕРј Р»РѕРіРёРЅРµ")
     void shouldErrorWithInvalidLogin() {
         open("http://localhost:9999");
-        
-        $("[data-test-id=login] input").setValue("invalid_login");
-        $("[data-test-id=password] input").setValue(activeUser.getPassword());
-        $("[data-test-id=action-login]").click();
-        
-        $("[data-test-id=error-notification]")
+
+        [data-test-id=login] input.setValue("invalid_login");
+        [data-test-id=password] input.setValue(activeUser.getPassword());
+        [data-test-id=action-login].click();
+
+        [data-test-id=error-notification]
                 .shouldBe(visible, Duration.ofSeconds(15))
                 .shouldHave(text("РћС€РёР±РєР°! РќРµРІРµСЂРЅРѕ СѓРєР°Р·Р°РЅ Р»РѕРіРёРЅ РёР»Рё РїР°СЂРѕР»СЊ"));
     }
@@ -74,15 +68,14 @@ class AuthTest {
     @DisplayName("РћС€РёР±РєР° РїСЂРё РЅРµРІРµСЂРЅРѕРј РїР°СЂРѕР»Рµ")
     void shouldErrorWithInvalidPassword() {
         open("http://localhost:9999");
-        
-        $("[data-test-id=login] input").setValue(activeUser.getLogin());
-        $("[data-test-id=password] input").setValue("invalid_password");
-        $("[data-test-id=action-login]").click();
-        
-        $("[data-test-id=error-notification]")
+
+        [data-test-id=login] input.setValue(activeUser.getLogin());
+        [data-test-id=password] input.setValue("invalid_password");
+        [data-test-id=action-login].click();
+
+        [data-test-id=error-notification]
                 .shouldBe(visible, Duration.ofSeconds(15))
                 .shouldHave(text("РћС€РёР±РєР°! РќРµРІРµСЂРЅРѕ СѓРєР°Р·Р°РЅ Р»РѕРіРёРЅ РёР»Рё РїР°СЂРѕР»СЊ"));
     }
 
 }
-

@@ -1,4 +1,4 @@
-package ru.netology.ibank.data;
+﻿package ru.netology.ibank.data;
 
 import io.restassured.builder.RequestSpecBuilder;
 import io.restassured.filter.log.LogDetail;
@@ -27,13 +27,5 @@ public class ApiHelper {
                 .post("/api/system/users")
         .then()
                 .statusCode(200);
-    }
-
-    public static void createActiveUser(String login, String password) {
-        createUser(new ApiUser(login, password, "active"));
-    }
-
-    public static void createBlockedUser(String login, String password) {
-        createUser(new ApiUser(login, password, "blocked"));
     }
 }

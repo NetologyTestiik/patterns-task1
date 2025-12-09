@@ -24,10 +24,8 @@ dependencies {
 
 test {
     useJUnitPlatform()
-    systemProperties = [
-        'selenide.headless': System.getProperty('selenide.headless', 'false')
-    ]
-    systemProperty "file.encoding", "UTF-8"
+    systemProperty 'selenide.headless', System.getProperty('selenide.headless', 'true')
+    systemProperty 'file.encoding', 'UTF-8'
 }
 
 compileJava {

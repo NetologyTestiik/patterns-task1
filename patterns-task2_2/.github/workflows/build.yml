@@ -25,7 +25,6 @@ jobs:
       run: |
         java -jar ./artifacts/app-ibank.jar &
         echo \$! > app.pid
-        sleep 3
 
     - name: Build with Gradle
       run: ./gradlew test -Dselenide.headless=true

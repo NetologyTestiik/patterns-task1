@@ -17,20 +17,11 @@ public class DataGenerator {
         return faker.internet().password();
     }
 
-    public static ApiUser generateApiUser(String status) {
+    public static ApiUser generateUser(String status) {
         return new ApiUser(
                 generateLogin(),
                 generatePassword(),
                 status
         );
-    }
-
-
-    public static ApiUser generateActiveApiUser() {
-        return generateApiUser("active");
-    }
-
-    public static ApiUser generateBlockedApiUser() {
-        return generateApiUser("blocked");
     }
 }
