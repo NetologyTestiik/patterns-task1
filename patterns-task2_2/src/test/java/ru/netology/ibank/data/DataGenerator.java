@@ -1,4 +1,4 @@
-package ru.netology.ibank.data;
+﻿package ru.netology.ibank.data;
 
 import com.github.javafaker.Faker;
 import java.util.Locale;
@@ -25,13 +25,6 @@ public class DataGenerator {
         );
     }
 
-    public static UiUser generateUiUser(String status) {
-        ApiUser apiUser = generateApiUser(status);
-        return new UiUser(
-                apiUser.getLogin(),
-                apiUser.getPassword()
-        );
-    }
 
     public static ApiUser generateActiveApiUser() {
         return generateApiUser("active");

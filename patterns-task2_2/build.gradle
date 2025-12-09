@@ -1,4 +1,4 @@
-plugins {
+﻿plugins {
     id 'java'
 }
 
@@ -24,6 +24,9 @@ dependencies {
 
 test {
     useJUnitPlatform()
+    systemProperties = [
+        'selenide.headless': System.getProperty('selenide.headless', 'false')
+    ]
     systemProperty "file.encoding", "UTF-8"
 }
 

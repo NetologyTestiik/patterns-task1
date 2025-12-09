@@ -1,7 +1,6 @@
 ﻿package ru.netology.ibank;
 
 import com.codeborne.selenide.Configuration;
-import java.time.Duration;
 import org.junit.jupiter.api.*;
 import ru.netology.ibank.data.*;
 
@@ -52,7 +51,7 @@ class AuthTest {
         
         // РџСЂРѕРІРµСЂСЏРµРј РѕС€РёР±РєСѓ
         $("[data-test-id=error-notification]")
-                .shouldBe(visible, Duration.ofSeconds(15))
+                .shouldBe(visible)
                 .shouldHave(text("РћС€РёР±РєР°! РџРѕР»СЊР·РѕРІР°С‚РµР»СЊ Р·Р°Р±Р»РѕРєРёСЂРѕРІР°РЅ"));
     }
 
@@ -66,7 +65,7 @@ class AuthTest {
         $("[data-test-id=action-login]").click();
         
         $("[data-test-id=error-notification]")
-                .shouldBe(visible, Duration.ofSeconds(15))
+                .shouldBe(visible)
                 .shouldHave(text("РћС€РёР±РєР°! РќРµРІРµСЂРЅРѕ СѓРєР°Р·Р°РЅ Р»РѕРіРёРЅ РёР»Рё РїР°СЂРѕР»СЊ"));
     }
 
@@ -80,9 +79,8 @@ class AuthTest {
         $("[data-test-id=action-login]").click();
         
         $("[data-test-id=error-notification]")
-                .shouldBe(visible, Duration.ofSeconds(15))
+                .shouldBe(visible)
                 .shouldHave(text("РћС€РёР±РєР°! РќРµРІРµСЂРЅРѕ СѓРєР°Р·Р°РЅ Р»РѕРіРёРЅ РёР»Рё РїР°СЂРѕР»СЊ"));
     }
 
 }
-
